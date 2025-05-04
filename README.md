@@ -40,7 +40,7 @@ Labels:
 
 *Clone the repository*
 
-git clone https://github.com/yourusername/bert-domestic-violence-risk-detector.git
+git clone https://github.com/VinayBR03/bert-domestic-violence-risk-detector.git
 
 cd bert-domestic-violence-risk-detector
 
