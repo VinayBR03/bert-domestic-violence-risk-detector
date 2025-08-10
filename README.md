@@ -4,7 +4,7 @@ A deep learning-powered application that uses BERT for detecting the risk of dom
 
 # Features
 
-🔤 Text Input Analysis – Type and evaluate messages for risk.
+🔤 Text Input Analysis – Type and evaluate messages for risk. 
 
 🎙️ Voice Recording Support – Record your voice to assess speech.
 
