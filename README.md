@@ -4,16 +4,16 @@ A deep learning-powered application that uses BERT for detecting the risk of dom
 
 <h1>Table of Contnets</h1>
 <ul>
-  <li><a href="">Features</a></li>
-  <li><a href="">Model Architecture</a></li>
-  <li><a href="">Dataset</a></li>
-  <li><a href="">Installation</a></li>
-  <li><a href="">Getting started</a></li>
-  <li><a href="">Risk Interpretation</a></li>
-  <li><a href="">Dependencies</a></li>
-  <li><a href="">File Structure</a></li>
-  <li><a href="">Ethical USe</a></li>
-  <li><a href="">Contributing</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#features">Features</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#model-architecture">Model Architecture</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#dataset">Dataset</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#installation">Installation</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#getting-started">Getting started</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#risk-interpretation">Risk Interpretation</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#dependencies-1">Dependencies</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#file-structure">File Structure</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#ethical-use">Ethical USe</a></li>
+  <li><a href="https://github.com/VinayBR03/bert-domestic-violence-risk-detector/blob/main/README.md#contributing">Contributing</a></li>
 </ul>
 
 # Features
