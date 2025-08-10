@@ -2,6 +2,20 @@
 
 A deep learning-powered application that uses BERT for detecting the risk of domestic violence from text, voice input, or uploaded audio files. The model classifies input into high, medium, or low risk levels and suggests appropriate actions.
 
+<h1>Table of Contnets</h1>
+<ul>
+  <li><a href="">Features</a></li>
+  <li><a href="">Model Architecture</a></li>
+  <li><a href="">Dataset</a></li>
+  <li><a href="">Installation</a></li>
+  <li><a href="">Getting started</a></li>
+  <li><a href="">Risk Interpretation</a></li>
+  <li><a href="">Dependencies</a></li>
+  <li><a href="">File Structure</a></li>
+  <li><a href="">Ethical USe</a></li>
+  <li><a href="">Contributing</a></li>
+</ul>
+
 # Features
 
 🔤 Text Input Analysis – Type and evaluate messages for risk. 
