@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Domestic Violence Risk Analyzer</title>
+  <style>
+    body { font-family: Arial; background:#f5f7fa; display:flex; justify-content:center; align-items:flex-start; padding:40px 20px; }
+    .container { background:#fff; padding:25px 30px; border-radius:12px; max-width:600px; width:100%; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    h1 { text-align:center; margin-bottom:20px; color:#2c3e50; }
+    .section { display:none; margin-top:20px; }
+    textarea, input[type="file"] { width:100%; padding:10px; margin-top:10px; border-radius:8px; border:1px solid #ccc; }
+    button { margin-top:15px; padding:10px 18px; border:none; border-radius:8px; background:#3498db; color:#fff; cursor:pointer; }
+    button:hover { background:#2980b9; }
+    .result-box { margin-top:25px; padding:15px; border-radius:8px; background:#ecf9f1; border-left:5px solid #27ae60; }
+    .result-box.error { background:#fdecea; border-left:5px solid #e74c3c; }
+    .transcription { margin-top:10px; padding:12px; background:#f8f9fa; border-radius:8px; font-style:italic; color:#555; }
+  </style>
+</head>
+<body>
+<div class="container">
+<h1>Domestic Violence Risk Analyzer</h1>
+
+<form id="option-form">
+  <label><input type="radio" name="option" value="text" required> Text Input</label><br>
+  <label><input type="radio" name="option" value="file"> Upload Audio File</label><br>
+  <label><input type="radio" name="option" value="record"> Record Live Audio</label><br><br>
+  <button type="submit">Next</button>
+</form>
+
+<form id="input-form" method="POST" enctype="multipart/form-data" style="display:none;">
+  <input type="hidden" name="option" id="chosen-option">
+  <div id="text-section" class="section"><textarea name="text_input" rows="4" placeholder="Enter text here"></textarea></div>
+  <div id="file-section" class="section"><input type="file" name="audio_file" accept="audio/*"></div>
+  <div id="record-section" class="section">
+    <button type="button" id="start-record">Start Recording</button>
+    <button type="button" id="stop-record" disabled>Stop Recording</button>
+    <p id="record-status"></p>
+    <input type="hidden" name="recorded_audio" id="recorded_audio">
+  </div>
+  <br><button type="submit">Analyze</button>
+</form>
+
+{% if transcription %}<div class="transcription"><strong>Transcription:</strong> {{ transcription }}</div>{% endif %}
+{% if result %}<div class="result-box {% if 'Could not process' in result %}error{% endif %}"><strong>Result:</strong> {{ result }}</div>{% endif %}
+
+<script>
+const optionForm = document.getElementById("option-form");
+const inputForm = document.getElementById("input-form");
+const chosenOption = document.getElementById("chosen-option");
+const textSection = document.getElementById("text-section");
+const fileSection = document.getElementById("file-section");
+const recordSection = document.getElementById("record-section");
+
+optionForm.onsubmit = e => {
+  e.preventDefault();
+  const option = document.querySelector("input[name='option']:checked").value;
+  chosenOption.value = option;
+  textSection.style.display = (option==="text")?"block":"none";
+  fileSection.style.display = (option==="file")?"block":"none";
+  recordSection.style.display = (option==="record")?"block":"none";
+  optionForm.style.display="none";
+  inputForm.style.display="block";
+};
+
+let mediaRecorder, audioChunks=[];
+const startBtn = document.getElementById("start-record");
+const stopBtn = document.getElementById("stop-record");
+const statusText = document.getElementById("record-status");
+const recordedAudioInput = document.getElementById("recorded_audio");
+
+startBtn.onclick = async () => {
+  audioChunks = [];
+  const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+  mediaRecorder = new MediaRecorder(stream, {mimeType:"audio/webm"});
+  mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+  mediaRecorder.onstart = () => { statusText.innerText="Recording..."; startBtn.disabled=true; stopBtn.disabled=false; };
+  mediaRecorder.onstop = async () => {
+    const blob = new Blob(audioChunks, {type:"audio/webm"});
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = () => {
+      recordedAudioInput.value = reader.result;
+      statusText.innerText="Recording saved. Ready to submit.";
+      startBtn.disabled=false; stopBtn.disabled=true;
+    };
+  };
+  mediaRecorder.start();
+};
+
+stopBtn.onclick = () => { if(mediaRecorder && mediaRecorder.state==="recording") mediaRecorder.stop(); };
+</script>
+</div>
+</body>
+</html>
