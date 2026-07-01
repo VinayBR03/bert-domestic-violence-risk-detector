@@ -43,7 +43,7 @@ Run the following command to install required packages:
 pip install -r reqiurements.txt
 ```
 
-### 2. Model Training (Optional)
+### 2. Model Training
 
 See [`Domestic_Violence_Risk_Detector.ipynb`](Domestic_Violence_Risk_Detector.ipynb) for training and evaluation. The notebook fine-tunes a BERT model on `domestic_violence_data.csv` and saves it to [`saved_model/`](saved_model).
 
